@@ -1,7 +1,7 @@
 #include <GL/glut.h>
 #include <math.h>
-
-float angle = 0.0; // Góc xoay ban d?u
+//hello
+float angle = 0.0; // GÃ³c xoay ban d?u
 bool rotateLight = false;
 
 void init() {
@@ -15,18 +15,18 @@ void rotateScene(int value) {
     if (rotateLight) glutTimerFunc(25, rotateScene, 0);
 }
 void DrawChessboardFloor() {
-    int tiles = 10; // S? lu?ng ô vuông trên m?i hàng/c?t
-    float size = 10.0f / tiles; // Kích thu?c c?a m?i ô vuông
+    int tiles = 10; // S? lu?ng Ã´ vuÃ´ng trÃªn m?i hÃ ng/c?t
+    float size = 10.0f / tiles; // KÃ­ch thu?c c?a m?i Ã´ vuÃ´ng
     bool colorToggle = false;
 
     glBegin(GL_QUADS);
     for (int row = 0; row < tiles; ++row) {
         for (int col = 0; col < tiles; ++col) {
-            colorToggle = !colorToggle; // Ð?i màu cho m?i ô
+            colorToggle = !colorToggle; // Ã?i mÃ u cho m?i Ã´
             if (colorToggle)
-                glColor3f(0.0f, 0.0f, 0.0f); // Màu den
+                glColor3f(0.0f, 0.0f, 0.0f); // MÃ u den
             else
-                glColor3f(1.0f, 1.0f, 1.0f); // Màu tr?ng
+                glColor3f(1.0f, 1.0f, 1.0f); // MÃ u tr?ng
 
             float x = -5.0f + col * size;
             float z = -5.0f + row * size;
@@ -35,7 +35,7 @@ void DrawChessboardFloor() {
             glVertex3f(x + size, -1.0f, z + size);
             glVertex3f(x + size, -1.0f, z);
         }
-        colorToggle = !colorToggle; // Ð?i màu cho m?i hàng m?i
+        colorToggle = !colorToggle; // Ã?i mÃ u cho m?i hÃ ng m?i
     }
     glEnd();
 }
@@ -46,7 +46,7 @@ void display() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
 
-    // C?p nh?t v? trí camera d?a vào góc xoay
+    // C?p nh?t v? trÃ­ camera d?a vÃ o gÃ³c xoay
     float x = 5.0 * sin(angle);
     float z = 5.0 * cos(angle);
     gluLookAt(x, 0.0, z, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
@@ -55,23 +55,23 @@ void display() {
 	if (rotateLight) {
         glDisable(GL_LIGHTING);
     }
-    //glColor3f(0.8, 0.8, 0.8); // Màu s?c cho tu?ng
+    //glColor3f(0.8, 0.8, 0.8); // MÃ u s?c cho tu?ng
 
      DrawChessboardFloor();
 
     glBegin(GL_QUADS);
-    // Sàn nhà
+    // SÃ n nhÃ 
     glVertex3f(-5.0, -1.0, 5.0);
     glVertex3f(-5.0, -1.0, -5.0);
     glVertex3f(5.0, -1.0, -5.0);
     glVertex3f(5.0, -1.0, 5.0);
-    // Tr?n nhà
+    // Tr?n nhÃ 
     glColor3f(0.5f, 0.35f, 0.05f);
     glVertex3f(-5.0, 1.0, 5.0);
     glVertex3f(-5.0, 1.0, -5.0);
     glVertex3f(5.0, 1.0, -5.0);
     glVertex3f(5.0, 1.0, 5.0);
-    // Các b?c tu?ng
+    // CÃ¡c b?c tu?ng
     glColor3f(0.8, 0.8, 0.8);
     glVertex3f(-5.0, -1.0, -5.0);
     glVertex3f(-5.0, 1.0, -5.0);
